@@ -8,5 +8,7 @@ public class Main {
         // hejehj
 
         // pusher til main
+
+        //yeetNdelete
     }
 }
