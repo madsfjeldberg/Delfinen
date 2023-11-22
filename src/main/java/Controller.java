@@ -19,5 +19,3 @@ public class Controller {
     public void addMember(String name, int age, String mail, String activeMembership, LocalDate birthday, LocalDate lastPayment) {
         db.addMember(name, age, mail, activeMembership, birthday, lastPayment);
     }
-
-}
