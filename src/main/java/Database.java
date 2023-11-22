@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public class Database {
 
+    // skal måske bruge flere filehandlers?
+    // til at gemme svømmeresultat / konkurrencesvømmere
     FileHandler fh;
     private ArrayList<Member> memberList;
 
@@ -16,6 +18,8 @@ public class Database {
         fh.saveList(memberList);
     }
 
+    // viser alle informationer om et givet medlem
+    // skal måske skrives om til kun at vise relevant info
     public String showInfo(Member member) {
         String output = "";
         output =member.getName()

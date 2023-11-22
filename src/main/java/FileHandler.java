@@ -54,6 +54,7 @@ public class FileHandler {
         LocalDate lastPayment;
 
         try (Scanner reader = new Scanner(file)) {
+
             while (reader.hasNextLine()) {
                 String[] memberValues = reader.nextLine().split(",");
                 name = trimString(memberValues[0]);

@@ -30,6 +30,8 @@ public class Member {
         this.birthday = birthday;
         this.lastPaymentDate = lastPaymentDate;
         this.nextPaymentDate = nextPaymentDate;
+        this.activeMembership = activeMembership;
+        this.mail = mail;
     }
 
     public String getName() {
@@ -59,6 +61,7 @@ public class Member {
     public String getMail() {
         return mail;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -82,6 +85,4 @@ public class Member {
     public void setMail(String mail) {
         this.mail = mail;
     }
-
-
 }
