@@ -4,31 +4,32 @@ public class Member {
 
     private String name;
     private int age;
-
-
+    private String mail;
+    private String activeMembership;
     private LocalDate birthday;
     private LocalDate lastPaymentDate;
     private LocalDate nextPaymentDate;
-    private LocalDate membershipStart;
-    private boolean activeMembership;
-    private String gender;
-    private int memberID;
-    private String mail;
 
-    public Member(String name, int age, LocalDate birthday, LocalDate lastPaymentDate,
-                  LocalDate nextPaymentDate, LocalDate membershipStart, boolean activeMembership,
-                  String gender, int memberID, String mail) {
 
+
+    public Member(String name, int age, String mail, String activeMembership, LocalDate birthday, LocalDate lastPaymentDate) {
         this.name = name;
         this.age = age;
+        this.mail = mail;
+        this.activeMembership = activeMembership;
+        this.birthday = birthday;
+        this.lastPaymentDate = lastPaymentDate;
+        this.nextPaymentDate = lastPaymentDate.plusYears(1);
+    }
+
+    public Member(String name, int age, String mail, String activeMembership, LocalDate birthday, LocalDate lastPaymentDate, LocalDate nextPaymentDate) {
+        this.name = name;
+        this.age = age;
+        this.mail = mail;
+        this.activeMembership = activeMembership;
         this.birthday = birthday;
         this.lastPaymentDate = lastPaymentDate;
         this.nextPaymentDate = nextPaymentDate;
-        this.membershipStart = membershipStart;
-        this.activeMembership = activeMembership;
-        this.gender = gender;
-        this.memberID = memberID;
-        this.mail = mail;
     }
 
     public String getName() {
@@ -51,20 +52,8 @@ public class Member {
         return nextPaymentDate;
     }
 
-    public LocalDate getMembershipStart() {
-        return membershipStart;
-    }
-
-    public boolean isActiveMembership() {
+    public String isActiveMembership() {
         return activeMembership;
-    }
-
-    public int getMemberID() {
-        return memberID;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public String getMail() {
@@ -86,24 +75,8 @@ public class Member {
         this.lastPaymentDate = lastPaymentDate;
     }
 
-    public void setNextPaymentDate(LocalDate nextPaymentDate) {
-        this.nextPaymentDate = nextPaymentDate;
-    }
-
-    public void setMembershipStart(LocalDate membershipStart) {
-        this.membershipStart = membershipStart;
-    }
-
-    public void setActiveMembership(boolean activeMembership) {
+    public void setActiveMembership(String activeMembership) {
         this.activeMembership = activeMembership;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setMemberID(int memberID) {
-        this.memberID = memberID;
     }
 
     public void setMail(String mail) {
