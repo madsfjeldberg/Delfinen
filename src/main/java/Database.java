@@ -22,17 +22,22 @@ public class Database {
     // skal måske skrives om til kun at vise relevant info
     public String showInfo(Member member) {
         String output = "";
-        output =member.getName()
-                + "," + member.getAge()
-                + "," + member.getBirthday()
-                + "," + member.getLastPaymentDate()
-                + "," + member.getNextPaymentDate()
-                + "," + member.isActiveMembership()
-                + "," + member.getMail();
+        output = "\nNavn: " + member.getName()
+                 + "\nAlder: " + member.getAge()
+                 + "\nMail: " + member.getMail()
+                 + "\n";
         return output;
     }
 
-    public void addMember(String name, int age, String mail, String activeMembership,
+    public String showList() {
+        String out = "";
+        for (Member member : memberList) {
+            out += showInfo(member);
+        }
+        return out;
+    }
+
+    public void addMember(String name, int age, String mail, boolean activeMembership,
                           LocalDate birthday, LocalDate lastPayment) {
         Member member = new Member(name, age, mail, activeMembership, birthday, lastPayment);
         memberList.add(member);

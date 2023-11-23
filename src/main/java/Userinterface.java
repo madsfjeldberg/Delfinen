@@ -84,7 +84,7 @@ public class UserInterface {
 
             switch (userInput) {
                 case 1 -> createMembership();
-                //case 2 -> Liste over medlemmer
+                case 2 -> showList();
                 case 9 -> {
                     ctrl.saveList();
                     System.out.println("Tilbage til hovedmenuen.");
@@ -106,7 +106,7 @@ public class UserInterface {
         String mail = input.nextLine();
 
         System.out.println("Aktivt Medlemskab: (true/false)");
-        String activeMembership = input.nextLine();
+        boolean activeMembership = Boolean.parseBoolean(input.nextLine());
 
         System.out.println("Indtast fødselsdagsdato:");
         LocalDate birthday = LocalDate.parse(input.nextLine(), formatter);
@@ -115,6 +115,10 @@ public class UserInterface {
         LocalDate lastPayment = LocalDate.now();
 
         ctrl.addMember(name, age, mail, activeMembership, birthday, lastPayment);
+    }
+
+    private void showList() {
+        System.out.println(ctrl.showList());
     }
 
     private int getValidInput() {

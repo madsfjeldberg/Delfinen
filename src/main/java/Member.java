@@ -5,14 +5,14 @@ public class Member {
     private String name;
     private int age;
     private String mail;
-    private String activeMembership;
+    private boolean activeMembership;
     private LocalDate birthday;
     private LocalDate lastPaymentDate;
     private LocalDate nextPaymentDate;
 
 
 
-    public Member(String name, int age, String mail, String activeMembership, LocalDate birthday, LocalDate lastPaymentDate) {
+    public Member(String name, int age, String mail, boolean activeMembership, LocalDate birthday, LocalDate lastPaymentDate) {
         this.name = name;
         this.age = age;
         this.mail = mail;
@@ -22,7 +22,7 @@ public class Member {
         this.nextPaymentDate = lastPaymentDate.plusYears(1);
     }
 
-    public Member(String name, int age, String mail, String activeMembership, LocalDate birthday, LocalDate lastPaymentDate, LocalDate nextPaymentDate) {
+    public Member(String name, int age, String mail, boolean activeMembership, LocalDate birthday, LocalDate lastPaymentDate, LocalDate nextPaymentDate) {
         this.name = name;
         this.age = age;
         this.mail = mail;
@@ -54,12 +54,21 @@ public class Member {
         return nextPaymentDate;
     }
 
-    public String isActiveMembership() {
+    public boolean isActiveMembership() {
         return activeMembership;
     }
 
     public String getMail() {
         return mail;
+    }
+
+    public String getTeam(Member member) {
+        if (activeMembership) {
+            if (member.age < 18) {
+                return "Junior";
+            } else return "Senior";
+        }
+        return "Passiv";
     }
 
     public void setName(String name) {
@@ -78,7 +87,7 @@ public class Member {
         this.lastPaymentDate = lastPaymentDate;
     }
 
-    public void setActiveMembership(String activeMembership) {
+    public void setActiveMembership(boolean activeMembership) {
         this.activeMembership = activeMembership;
     }
 

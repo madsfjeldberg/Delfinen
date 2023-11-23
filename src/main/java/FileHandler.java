@@ -31,8 +31,8 @@ public class FileHandler {
                 out = member.getName()
                         + "," + member.getAge()
                         + "," + member.getMail()
-                        + "," + formatDate(member.getBirthday())
                         + "," + member.isActiveMembership()
+                        + "," + formatDate(member.getBirthday())
                         + "," + formatDate(member.getLastPaymentDate())
                         + "," + formatDate(member.getNextPaymentDate());
 
@@ -49,7 +49,7 @@ public class FileHandler {
         String name;
         int age;
         String mail;
-        String activeMembership;
+        boolean activeMembership;
         LocalDate birthday;
         LocalDate lastPayment;
 
@@ -60,9 +60,9 @@ public class FileHandler {
                 name = trimString(memberValues[0]);
                 age = parseTrim(memberValues[1]);
                 mail = trimString(memberValues[2]);
-                activeMembership = trimString(memberValues[3]);
-                birthday = LocalDate.parse(memberValues[4]);
-                lastPayment = LocalDate.parse(memberValues[5]);
+                activeMembership = parseBoolean(memberValues[3]);
+                birthday = parseDate(memberValues[4]);
+                lastPayment = parseDate(memberValues[5]);
 
                 Member member = new Member(name, age, mail, activeMembership, birthday, lastPayment);
                 memberList.add(member);
@@ -85,5 +85,14 @@ public class FileHandler {
     private static String formatDate(LocalDate localDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return localDate.format(formatter);
+    }
+
+    private static LocalDate parseDate(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(dateString, formatter);
+    }
+
+    private static boolean parseBoolean(String string) {
+        return string.toLowerCase().equals("true");
     }
 }
