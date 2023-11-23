@@ -36,13 +36,16 @@ public class UserInterface {
         do {
             System.out.println("""
                     Træner Menu
-                    1. Se Svømmetider
+                    1. Top 5 svømmere (IKKE IMPLEMENTERET)
+                    2. Opdater resultat
+                    3. Søg efter svømmer (IKKE IMPLEMENTERET)
                     9. Tilbage til hovedmenu""");
 
             userInput = getValidInput();
 
             switch (userInput) {
                 case 1 -> System.out.println("Hej");
+                case 2 -> update();
                 case 9 -> {
                     ctrl.saveList();
                     System.out.println("Tilbage til hovedmenuen."); }

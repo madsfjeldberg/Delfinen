@@ -5,10 +5,9 @@ public class TournamentMember extends Member {
     private Result result;
     private String team;
 
-    public TournamentMember(String name, int age, LocalDate birthday, LocalDate lastPaymentDate,
-                            LocalDate nextPaymentDate, LocalDate membershipStart, boolean activeMembership,
-                            String gender, int memberID, String mail, double result, String team) {
-        super(name, age, mail, activeMembership,birthday, lastPaymentDate, nextPaymentDate);
+    public TournamentMember(String name, int age, String mail, boolean activeMembership,
+                            LocalDate birthday, LocalDate lastPaymentDate, Result result, String team) {
+        super(name, age, mail, activeMembership,birthday, lastPaymentDate);
         this.result = result;
         this.team = team;
     }
@@ -16,7 +15,7 @@ public class TournamentMember extends Member {
         return result;
     }
 
-    public void setResult(double result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
