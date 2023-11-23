@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -18,6 +19,10 @@ public class Controller {
 
     public String showInfo(Member member) {
         return db.showInfo(member);
+    }
+
+    public ArrayList<Member> getMemberList() {
+        return db.getMemberList();
     }
 
     public void addMember(String name, int age, String mail, boolean activeMembership, LocalDate birthday, LocalDate lastPayment) {

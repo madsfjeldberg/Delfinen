@@ -10,8 +10,6 @@ public class Member {
     private LocalDate lastPaymentDate;
     private LocalDate nextPaymentDate;
 
-
-
     public Member(String name, int age, String mail, boolean activeMembership, LocalDate birthday, LocalDate lastPaymentDate) {
         this.name = name;
         this.age = age;
