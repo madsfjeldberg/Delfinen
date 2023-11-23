@@ -141,4 +141,27 @@ public class UserInterface {
                 3. Træner Menu
                 9. Afslut""");
     }
+
+    private String top5() {
+
+
+        return "";
+    }
+
+    private void update() {
+        Member chosenMember = null;
+        System.out.println("Indtast email på det medlem som skal opdateres");
+        String userInput = input.nextLine();
+        for (Member member: ctrl.getMemberList()) {
+            if (userInput.equals(member.getMail())) {
+                chosenMember = member;
+            }
+        }
+        if (chosenMember == null) {
+            System.out.println("Medlem ikke fundet");
+        }
+
+
+
+    }
 }

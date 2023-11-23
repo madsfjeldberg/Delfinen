@@ -5,17 +5,26 @@ public class Database {
 
     // skal måske bruge flere filehandlers?
     // til at gemme svømmeresultat / konkurrencesvømmere
-    FileHandler fh;
+    FileHandler memberHandler;
+    FileHandler resultHandler;
+    FileHandler subscriptionHandler;
     private ArrayList<Member> memberList;
+    private ArrayList<TournamentMember> tournamentMemberList;
+    //private ArrayList<Subscription> subscriptionList;
 
     public Database() {
-        fh = new FileHandler("members.csv");
+        memberHandler = new FileHandler("members.csv");
+        resultHandler = new FileHandler("tournamentmembers.csv");
+        subscriptionHandler = new FileHandler("subscription.csv");
         memberList = new ArrayList<>();
-        memberList = fh.loadList();
+        memberList = memberHandler.loadMemberList();
+        tournamentMemberList = new ArrayList<>();
+        tournamentMemberList = resultHandler.loadTournamentMemberList();
+
     }
 
     public void saveList() {
-        fh.saveList(memberList);
+        memberHandler.saveList(memberList);
     }
 
     // viser alle informationer om et givet medlem
@@ -27,6 +36,10 @@ public class Database {
                  + "\nMail: " + member.getMail()
                  + "\n";
         return output;
+    }
+
+    public ArrayList<Member> getMemberList() {
+        return memberList;
     }
 
     public String showList() {

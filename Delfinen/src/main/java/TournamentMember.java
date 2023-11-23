@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class TournamentMember extends Member {
 
-    private double result=0;
+    private Result result;
     private String team;
 
     public TournamentMember(String name, int age, LocalDate birthday, LocalDate lastPaymentDate,
@@ -12,7 +12,7 @@ public class TournamentMember extends Member {
         this.result = result;
         this.team = team;
     }
-    public double getResult() {
+    public Result getResult() {
         return result;
     }
 
