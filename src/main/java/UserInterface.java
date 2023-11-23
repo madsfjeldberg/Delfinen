@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private final Controller ctrl;
+    private Controller ctrl;
     private final Scanner input;
-    int userInput;
+    int SubMenuInput;
     DateTimeFormatter formatter;
 
     public UserInterface() {
@@ -16,22 +16,25 @@ public class UserInterface {
         formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     }
 
-    public void run() {
+    public void UserInterface() {
+        int mainMenuInput;
+
 
         do {
             displayMainMenu();
-            userInput = getValidInput();
-            switch (userInput) {
-                case 1 -> chairmanMenu();
-                case 2 -> treasurerMenu();
-                case 3 -> trainerMenu();
+            mainMenuInput = getValidInput();
+
+            switch (mainMenuInput) {
+                case 1 -> handleChairmanMenu();
+                case 2 -> handleTreasurerMenu();
+                case 3 -> handleTrainerMenu();
                 case 9 -> System.out.println("Afslutter programmet. Farvel!");
                 }
 
-        } while (userInput != 9);
+        } while (mainMenuInput != 9);
     }
 
-    private void trainerMenu() {
+    private void handleTrainerMenu() {
 
         do {
             System.out.println("""
@@ -39,19 +42,19 @@ public class UserInterface {
                     1. Se Svømmetider
                     9. Tilbage til hovedmenu""");
 
-            userInput = getValidInput();
+            SubMenuInput = getValidInput();
 
-            switch (userInput) {
+            switch (SubMenuInput) {
                 case 1 -> System.out.println("Hej");
                 case 9 -> {
                     ctrl.saveList();
                     System.out.println("Tilbage til hovedmenuen."); }
                 default -> System.out.println("Fejl, tast venligst et gyldigt input fra menuen.");
             }
-        } while (userInput != 9);
+        } while (SubMenuInput != 9);
     }
 
-    private void treasurerMenu() {
+    private void handleTreasurerMenu() {
 
         do {
             System.out.println("""
@@ -59,19 +62,19 @@ public class UserInterface {
                     1. Se Kontingentsliste
                     9. Tilbage til hovedmenu""");
 
-            userInput = getValidInput();
+            SubMenuInput = getValidInput();
 
-            switch (userInput) {
+            switch (SubMenuInput) {
                 case 1 -> System.out.println("Hej");
                 case 9 -> {
                     ctrl.saveList();
                     System.out.println("Tilbage til hovedmenuen."); }
                 default -> System.out.println("Fejl, tast venligst et gyldigt input fra menuen.");
             }
-        } while (userInput != 9);
+        } while (SubMenuInput != 9);
     }
 
-    private void chairmanMenu() {
+    private void handleChairmanMenu() {
 
         do {
             System.out.println("""
@@ -80,9 +83,9 @@ public class UserInterface {
                     2. Liste over medlemmer
                     9. Tilbage til hovedmenu""");
 
-            userInput = getValidInput();
+            SubMenuInput = getValidInput();
 
-            switch (userInput) {
+            switch (SubMenuInput) {
                 case 1 -> createMembership();
                 //case 2 -> Liste over medlemmer
                 case 9 -> {
@@ -91,11 +94,10 @@ public class UserInterface {
                 }
                 default -> System.out.println("Fejl, tast venligst et gyldigt input fra menuen.");
             }
-        } while (userInput != 9);
+        } while (SubMenuInput != 9);
     }
 
     private void createMembership() {
-
         System.out.println("Indtast navn:");
         String name = input.nextLine();
 
@@ -105,7 +107,7 @@ public class UserInterface {
         System.out.println("Indtast mail:");
         String mail = input.nextLine();
 
-        System.out.println("Aktivt Medlemskab: (true/false)");
+        System.out.println("Aktivt Medlemsskab: (true/false)");
         String activeMembership = input.nextLine();
 
         System.out.println("Indtast fødselsdagsdato:");
@@ -137,4 +139,11 @@ public class UserInterface {
                 3. Træner Menu
                 9. Afslut""");
     }
+
+
+    private static String formatDate(LocalDate localDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return localDate.format(formatter);
+    }
+
 }
